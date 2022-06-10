@@ -8,6 +8,9 @@
 </head>
 <body>
   <form style="margin-top: 100px; margin-left: 100px;">
+    <h3>
+        <%- locals.msg  %> 
+    </h3>
       <input style="width: 500px; height: 50px;   border: 2px solid black; " type="text" />
       <button style=" 
       width: 200px; 
@@ -21,11 +24,9 @@
   <div style=" margin-top: 100px; margin-left: 100px;">
     <h3> LIST OF CLIENTS</h1>
         <div style="width: 1000px;  border: 2px solid black;  padding: 20px; ">
-          <%for(let i= 0;i<locals.data.length;i++){%>
+          <%for(let i= 0;i<clients.length;i++){%>
       <div style="width:800px; border: 1px solid black; padding: 10px;">
-      <h2> Client ID: <%- data[i].ID %></h2>
-      <h3> Client Name: <%- data[i].Name%> </h3>
-      
+      <h2> Client ID: <%- clients %></h2>   
       <div>
        
       </div>
@@ -35,7 +36,7 @@
       border: 5px; 
       background-color: darkslategray;
       border-radius: 17px; "><a style="
-      color: aliceblue;"  >Notify</a>
+      color: aliceblue;" href="" >Notify</a>
       </button>
       
       <button style=" 
@@ -44,7 +45,7 @@
       border: 5px; 
       background-color: darkslategray;
       border-radius: 17px; "><a style="
-      color: aliceblue;"   >Remove</a>
+      color: aliceblue;" href="" >Remove</a>
       </button>
       
       <button style=" 
@@ -53,7 +54,7 @@
       border: 5px; 
       background-color: darkslategray;
       border-radius: 17px; "><a style="
-      color: aliceblue;"   >Chat</a>
+      color: aliceblue;"   href="" >Chat</a>
       </button>
       
       </div>

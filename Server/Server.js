@@ -6,23 +6,25 @@ const io = require('socket.io')(server, {
     origin: '*',
   }
 });
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3003;
 var cors = require('cors')
 app.use(cors());
 
 
+var clients = [];
+
 app.get('/', function(req, res) {
   res.render("serverSide",{
-    data:[
-      {ID:'123',
-       Name:"Client1"}],
+     clients
    })
 });
 
 
 io.on('connection',function(socket){
+    clients.push(socket); 
     console.log('a new user is connected')
     socket.emit('connection', null);
+  
 })
 
 
