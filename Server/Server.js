@@ -13,18 +13,34 @@ app.use(cors());
 
 var clients = [];
 
-app.get('/', function(req, res) {
+app.get('/', (req, res)=>{
+  clients = []
+  io.sockets.sockets.forEach((socket) => {
+    clients.push(socket); 
+});
+
   res.render("serverSide",{
      clients
    })
 });
 
+app.get('/RemoveClient', (req,res)=>{
+  const {id}= req.query
+  io.sockets.sockets.forEach((socket) => {
+    // If given socket id is exist in list of all sockets, kill it
+    if(socket.id === id)
+      {  
+        socket.disconnect(true);
+        res.redirect('/')
+      }
+});
+ 
+})
+
 
 io.on('connection',function(socket){
-    clients.push(socket); 
     console.log('a new user is connected')
     socket.emit('connection', null);
-  
 })
 
 

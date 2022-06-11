@@ -7,14 +7,18 @@ const SERVER = "http://127.0.0.1:3003";
 function App() {
   const [ClientName,setClientName]= useState("ClientName")
   const [ClientID,setClientID]= useState("ClientID")
-  const [count,setCount]=useState(0)
-  var socket = socketClient (SERVER);
+  const [buttonState,setbuttonState]= useState(false)
+
+  var socket = ''
+
   function ConnectToServer(){
+    socket = socketClient (SERVER);
     socket.on('connection', () => { 
       console.log(`I'm connected with the back-end`);
       setClientID(socket.id)
-      setCount(count+1)
-    }); 
+     
+    });
+    setbuttonState(true)
   }
 
   return (
@@ -27,13 +31,10 @@ function App() {
       height: "50px",  
       border: "5px", 
       backgroundColor: "darkslategray",
-      borderRadius: "17px" }}  onClick={ConnectToServer}> 
+      borderRadius: "17px" }}    disabled={buttonState} onClick={ConnectToServer}> 
       Connect to Server
       </Button>
       <div> 
-        <h1>
-          {count}
-        </h1>
         
       </div>
        </div>
