@@ -18,7 +18,7 @@
       border: 5px; 
       background-color: darkslategray;
       border-radius: 17px; "><a style="
-      color: aliceblue;"   >BroadCast</a>
+      color: aliceblue;"  onClick = "BroadCastMsg()" >BroadCast</a>
       </button>
   </form>
   <div style=" margin-top: 100px; margin-left: 100px;">
@@ -63,4 +63,13 @@
   </div>
   
 </body>
+<script>
+  function BroadCastMsg()
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", '/SendBroadCastMsg', false ); // false for synchronous request
+    xmlHttp.send( );
+ 
+}
+</script>
 </html>

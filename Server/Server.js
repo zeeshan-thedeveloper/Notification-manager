@@ -37,11 +37,19 @@ app.get('/RemoveClient', (req,res)=>{
  
 })
 
+app.get('/SendBroadCastMsg',(req,res)=>{
+  io.emit("msg", "world");
+   console.log(" i am here in broadcast route")
+  res.redirect('/')
+})
+
 
 io.on('connection',function(socket){
     console.log('a new user is connected')
     socket.emit('connection', null);
+   
 })
+
 
 
  
